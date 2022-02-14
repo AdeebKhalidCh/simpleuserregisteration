@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>User Sign Up</title>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    	<div class="container text-center">
+        <div>
+            <h1>User Sign Up</h1>
+        </div>
+        <form action="#" th:action="@{/signup}" th:object="${userDTO}" method="post" style="max-width: 600px; margin: 0 auto;">
+	        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+	          <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+	        </div>
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">User Name: </label>
+                <div class="col-8">
+                     <input type="text" class="form-control" th:field="*{username}" placeholder="UserName" th:errorclass="is-invalid">
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                     <input type="password" class="form-control" th:field="*{password}" placeholder="Password" th:errorclass="is-invalid">
+                </div>
+            </div>         
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
